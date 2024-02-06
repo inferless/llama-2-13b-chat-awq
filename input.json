@@ -1,0 +1,14 @@
+{
+    "inputs": [
+      {
+        "data": [
+          "How to count all the stars in the night sky?"
+        ],
+        "name": "message",
+        "shape": [
+          1
+        ],
+        "datatype": "BYTES"
+      }
+    ]
+}

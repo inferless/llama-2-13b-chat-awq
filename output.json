@@ -1,0 +1,14 @@
+{
+    "outputs": [
+      {
+        "data": [
+          "Result"
+        ],
+        "name": "generated_text",
+        "shape": [
+          1
+        ],
+        "datatype": "BYTES"
+      }
+    ]
+}
