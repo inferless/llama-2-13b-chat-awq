@@ -39,3 +39,4 @@ optional:
   runtime_file_name: config.yaml
 model_url: https://github.com/inferless/Llama-2-13b-hf.git
 provider: GITHUB
+io_schema: true
