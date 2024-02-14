@@ -8,5 +8,5 @@ build:
     - "bitsandbytes==0.42.0"
     - "accelerate==0.26.1"
     - "scipy==1.12.0"
-    - "protobuf"
-    - "sentencepiece"
+    - "protobuf==4.25.2"
+    - "sentencepiece==0.1.99"
