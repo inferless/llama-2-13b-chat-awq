@@ -3,7 +3,6 @@ build:
     - "libssl-dev"
     - "libtesseract-dev"
   python_packages:
-    - "accelerate==0.21.0"
     - "transformers==4.37.2"
     - "bitsandbytes==0.42.0"
     - "accelerate==0.26.1"
