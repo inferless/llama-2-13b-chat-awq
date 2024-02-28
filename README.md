@@ -1,6 +1,8 @@
 # Llama-2-13b
-This is the Llama-2 13 Billion parameter's model template which you can use to import the model in Inferless.
-
+Llama 2 13B is a part of the Llama 2 family of language models developed by Meta AI.This is a template which you can use to import the model in Inferless.
+## Deploy OpenHermes-2.5-Mistral-7B using Inferless:
+- Deployment of Llama-2-13B model using [vLLM](https://github.com/vllm-project/vllm).
+- By using the vLLM, you can expect an average latency of 2.79 sec.
 ---
 ## Prerequisites
 - **Git**. You would need git installed on your system if you wish to customize the repo after forking.
