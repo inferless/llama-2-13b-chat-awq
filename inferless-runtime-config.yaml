@@ -1,11 +1,8 @@
 build:
+  cuda_version: "12.1.1"
   system_packages:
     - "libssl-dev"
     - "libtesseract-dev"
   python_packages:
-    - "transformers==4.37.2"
-    - "bitsandbytes==0.42.0"
-    - "accelerate==0.26.1"
-    - "scipy==1.12.0"
-    - "protobuf==4.25.2"
-    - "sentencepiece==0.1.99"
+    - "torch==2.1.2"
+    - "vllm==0.3.2"
