@@ -1,6 +1,7 @@
 from vllm import LLM, SamplingParams
 from huggingface_hub import snapshot_download
 from pathlib import Path
+import os
 
 class InferlessPythonModel:
     def initialize(self):
