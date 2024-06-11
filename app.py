@@ -19,7 +19,7 @@ class InferlessPythonModel:
         )
 
         # Initialize the LLM object with the downloaded model directory
-        self.llm = LLM(model=model_id,quantization="AWQ")
+        self.llm = LLM(model=model_id, enforce_eager=True, quantization="AWQ")
 
         # Load the tokenizer associated with the pre-trained model
         self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_model, token=HF_TOKEN)
