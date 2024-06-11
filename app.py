@@ -1,23 +1,44 @@
-from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig, pipeline
-import time
+from vllm import LLM, SamplingParams
+from transformers import AutoTokenizer
+
 
 class InferlessPythonModel:
+
     def initialize(self):
-        model_id = 'NousResearch/Llama-2-13b-chat-hf'
-        bnb_config = BitsAndBytesConfig(
-            load_in_4bit=True)
-        self.tokenizer = AutoTokenizer.from_pretrained(model_id)
-        model = AutoModelForCausalLM.from_pretrained(model_id, trust_remote_code=True,quantization_config=bnb_config,device_map="cuda")
-        self.pipe = pipeline("text-generation", model=model, tokenizer=self.tokenizer)
+        model_id = "TheBloke/Llama-2-13B-chat-AWQ"  # Specify the model repository ID
+        HF_TOKEN = "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" # Access Hugging Face token from environment variable
+        tokenizer_model = "meta-llama/Llama-2-7b-chat-hf"
+        # Define sampling parameters for model generation
+        # You can set max_tokens to 1024 for complete answer to your question
+        self.sampling_params = SamplingParams(
+            temperature=0.7,
+            top_p=0.1,
+            repetition_penalty=1.18,
+            top_k=40,
+            max_tokens=512,
+        )
+
+        # Initialize the LLM object with the downloaded model directory
+        self.llm = LLM(model=model_id,quantization="AWQ")
+
+        # Load the tokenizer associated with the pre-trained model
+        self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_model, token=HF_TOKEN)
 
     def infer(self, inputs):
-        prompt = inputs["prompt"]
-        messages = [{"role": "system", "content":prompt}]
+        prompts = inputs["prompt"]  # Extract the prompt from the input
 
-        prompt = self.pipe.tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-        out = self.pipe(prompt, max_new_tokens=256, do_sample=True, top_p=0.9,temperature=0.9)
-        generated_text = out[0]["generated_text"][len(prompt):]
-        return {'generated_result': generated_text}
+        # Apply the chat template and convert to a list of strings (without tokenization)
+        input_text = self.tokenizer.apply_chat_template([{"role": "user", "content": prompts}], tokenize=False)
+
+        # Generate text using the LLM with the specified sampling parameters
+        result = self.llm.generate(input_text, self.sampling_params)
+
+        # Extract the generated text from the result object
+        result_output = [output.outputs[0].text for output in result]
+
+        # Return a dictionary containing the generated text
+        return {"generated_result": result_output[0]}
 
     def finalize(self):
-        pass
+        self.llm = None
+        self.tokenizer = None
