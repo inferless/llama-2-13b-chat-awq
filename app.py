@@ -1,12 +1,12 @@
 from vllm import LLM, SamplingParams
 from transformers import AutoTokenizer
-
+import os
 
 class InferlessPythonModel:
 
     def initialize(self):
         model_id = "TheBloke/Llama-2-13B-chat-AWQ"  # Specify the model repository ID
-        HF_TOKEN = "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" # Access Hugging Face token from environment variable
+        HF_TOKEN =  os.getenv("HF_TOKEN") # Access Hugging Face token from environment variable
         tokenizer_model = "meta-llama/Llama-2-13b-chat-hf"
         # Define sampling parameters for model generation
         # You can set max_tokens to 1024 for complete answer to your question
