@@ -1,7 +1,6 @@
 # Llama-2-13b-chat
 Llama-2-13b-chat is a conversational variant of Meta's Llama-2 model with 13 billion parameters, optimized for chat and instruction-following tasks. It’s designed to provide efficient, context-aware responses in dialogue applications, making it a strong choice for developing chatbots and interactive systems.
 
-## Deploy Llama-2-13B using Inferless:
 - Deployment of Llama-2-13B model using [vLLM](https://github.com/vllm-project/vllm).
 - By using the vLLM, you can expect an average latency of 2.79 sec.
 ---
