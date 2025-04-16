@@ -1,5 +1,6 @@
 # Llama-2-13B
-Llama-2-13B is a part of the Llama 2 family of language models developed by Meta AI.This is a template which you can use to import the model in Inferless.
+Llama-2-13b-chat is a conversational variant of Meta's Llama-2 model with 13 billion parameters, optimized for chat and instruction-following tasks. It’s designed to provide efficient, context-aware responses in dialogue applications, making it a strong choice for developing chatbots and interactive systems.
+
 ## Deploy Llama-2-13B using Inferless:
 - Deployment of Llama-2-13B model using [vLLM](https://github.com/vllm-project/vllm).
 - By using the vLLM, you can expect an average latency of 2.79 sec.
@@ -35,44 +36,6 @@ Select the PyTorch as framework and choose **Repo(custom code)** as your model s
 After the create model step, while setting the configuration for the model make sure to select the appropriate runtime.
 
 Enter all the required details to Import your model. Refer [this link](https://docs.inferless.com/integrations/github-custom-code) for more information on model import.
-
-The following is a sample Input and Output JSON for this model which you can use while importing this model on Inferless.
-
-### Input
-```json
-{
-  "inputs": [
-    {
-      "data": [
-        "How to count all the stars in the night sky?"
-      ],
-      "name": "prompt",
-      "shape": [
-        1
-      ],
-      "datatype": "BYTES"
-    }
-  ]
-}
-```
-
-### Output
-```json
-{
-  "outputs": [
-    {
-      "data": [
-        "Result"
-      ],
-      "name": "generated_text",
-      "shape": [
-        1
-      ],
-      "datatype": "BYTES"
-    }
-  ]
-}
-```
 
 ---
 ## Curl Command
